@@ -35,9 +35,10 @@ int main() {
 			wm.find();
 			break;
 		case 6://排序职工
-
+			wm.sort();
 			break;
 		case 7://清空文档
+			wm.clean();
 			break;
 		default:
 			cout << "请选择一个选项" << endl;

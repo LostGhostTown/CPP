@@ -28,6 +28,9 @@ public:
 	void modify();
 	void find();
 	void sort();
+	void clean();
+
 	int isExist(int id);
+	
 	Worker** WorkerAyy;
 };

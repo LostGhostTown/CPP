@@ -107,6 +107,11 @@ void WorkerManager::Exit() {
 }
 WorkerManager::~WorkerManager() {
 	if (this->WorkerAyy != NULL) {
+		for (int i = 0; i < this->eNum; i++) {
+			if (this->WorkerAyy[i] != NULL);
+			delete this->WorkerAyy[i];
+			this->WorkerAyy[i] = NULL;
+		}
 		delete[] this->WorkerAyy;
 		this->WorkerAyy = NULL;
 	}
@@ -298,5 +303,64 @@ void WorkerManager::find() {
 	return;
 }
 void WorkerManager::sort() {
-
+	if (this->FileisEmpty) {
+		cout << "无员工" << endl;
+		return;
+	}
+	cout << "清选择排序方式：" << endl;
+	cout << "1.升序" << endl;
+	cout << "2.降序" << endl;
+	int select = 0;
+	cin >> select;
+	for (int i = 0; i < eNum; i++) {
+		int MinorMax = i;
+		for (int j = i + 1; j < eNum; j++) {
+			if (select == 1) {//升序
+				if (WorkerAyy[MinorMax]->ID > WorkerAyy[j]->ID) {
+					MinorMax = j;
+				}
+			}
+			else {
+				if (WorkerAyy[MinorMax]->ID < WorkerAyy[j]->ID) {
+					MinorMax = j;
+				}
+			}
+		}
+		if (i != MinorMax) {
+			Worker* temp = this->WorkerAyy[i];
+			this->WorkerAyy[i] = this->WorkerAyy[MinorMax];
+			this->WorkerAyy[MinorMax] = temp;
+		}
+	}
+	this->save();
+	this->show();
+}
+void WorkerManager::clean() {
+	cout << "是否确定操作\n1.确定\n2.返回" << endl;
+	int select;
+	cin >> select;
+	if (select == 1) {
+		ofstream ofs(FILENAME, ios::trunc);//删除文件并重新创建一个空的
+		ofs.close();
+		if (this->WorkerAyy != NULL) {
+			for (int i = 0; i < this->eNum; i++) {
+				if (this->WorkerAyy[i] != NULL);
+				delete this->WorkerAyy[i];
+				this->WorkerAyy[i] = NULL;
+			}
+			delete[] this->WorkerAyy;
+			this->WorkerAyy = NULL;
+		}
+		this->eNum = 0;
+		this->FileisEmpty = true;
+		cout << "清空成功" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+	else {
+		system("pause");
+		system("cls");
+		return;
+	}
 }
