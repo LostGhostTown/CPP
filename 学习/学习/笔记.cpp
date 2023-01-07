@@ -164,6 +164,8 @@ func(10)
 * A先构造B再构造 B先析构A再析构
 * 
 * 尽量在函数中调用类  而不是main
+* 
+* 面向对象的编程指 封装 继承和多态
 */
 /*封装
 * 每个对象都有属性和行为并施加一些限制
@@ -478,3 +480,52 @@ cout<<c
 * 
 * 分文件编写
 * 主程序直接包含.cpp而不是h 或者把声明和实现写到同一个文件中*/
+/*STL 基本模板库
+* 容器 算法和迭代器 仿函数 配接器 空间配置器
+* 变量方法for_each(开头指针，结束指针，print函数)//不需要括号  函数有参数 用于打印
+*/
+/* vector
+* 需要头文件
+* 语法：
+* vector<变量类型>变量名;
+* 
+* pushback()//尾部插入
+* 
+* 访问：
+* vector<数据类型>::iterator 变量名=vector变量名.begin();//变量指向第一个元素
+* vector<数据类型>::iterator 变量名=vector变量名.end();//变量指向最后一个元素的下一个位置
+* 
+* vector可以嵌套vector*/
+
+/*string
+* 是一个容器一个类
+* 注意下面是函数 调用用“.”
+* 
+* 构造函数
+* string(const char* 变量名)//使用char*赋值
+* string(const string& 变量名)//拷贝构造
+* string(int n,char 变量名)//使用n个char变量初始化
+* 赋值函数
+* string& operator=（）//可以把char* char string 赋值给当前字符串
+* string& assign（）//可以把char* char string 赋值给当前字符串
+* string& assign（const char *变量名, int n）//将char*中的前n个字符 赋值给当前字符串
+* string& assign（ int n，const char 变量名）//把n个char赋值给当前字符串
+* 字符串拼接 在字符串后加其他字符串
+* string& operator+=（）//char* char string添加到原本字符串之后
+* string& append（）char* char string添加到原本字符串之后
+* string& append（const char*变量名,int n）//把字符串的前n个字符拼接
+* string& append（const char*变量名,int pos ,int n）//把字符串的从pos开始的前n个字符拼接
+* 查找和替换函数
+* int find（const string&变量名，int pos）const;//查找变量第一次出现的位置，从pos开始查找   变量可替换成char* char
+* int rfind（const string&变量名，int pos）const;//查找变量最后一次出现的位置，从pos开始查找 变量可替换成char* char
+* string& replace(int pos,int n,const char* 变量名)替换从pos开始的n个字符串变为变量  会保留完整的变量 而不是替换掉的位数
+* 比较
+* int conpare（const char*变量名）=返回0  >返回1  <返回-1
+* 读写单个字符
+* char& operator[]（int n）
+* char& at(int n)
+* 插入和删除
+* string& insert(int pos,const char*s);在pos的位置插入
+* string& erase(int pos,int n=npos)删除从pos开始的n个字符
+* 截取
+* string substr(int pos,int n=npos)const; 从pos开始截取几个字符；*/
