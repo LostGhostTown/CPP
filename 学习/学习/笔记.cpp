@@ -484,6 +484,10 @@ cout<<c
 * 容器 算法和迭代器 仿函数 配接器 空间配置器
 * 变量方法for_each(开头指针，结束指针，print函数)//不需要括号  函数有参数 用于打印
 */
+/*iterator 一种迭代器 用于遍历容器
+* 例子:
+* for（容器名<类型名>::iterator it=从哪开始比如.begin();it!=到哪结束比如.end();it++）
+*/
 /* vector
 * 需要头文件
 * 语法：
@@ -496,7 +500,6 @@ cout<<c
 * vector<数据类型>::iterator 变量名=vector变量名.end();//变量指向最后一个元素的下一个位置
 * 
 * vector可以嵌套vector*/
-
 /*string
 * 是一个容器一个类
 * 注意下面是函数 调用用“.”
@@ -529,3 +532,24 @@ cout<<c
 * string& erase(int pos,int n=npos)删除从pos开始的n个字符
 * 截取
 * string substr(int pos,int n=npos)const; 从pos开始截取几个字符；*/
+/*vector
+* 头文件
+* vector=单端数组 类似于动态数组
+* 将原因数据复制到一个更大的空间 并在后面添加数据
+* .begin()指向第一个元素   .end()指向最后一个元素的后一个位置
+* .rbegin()指向最后一个元素  .rend()指向第一个元素的前一个位置
+* .push_back() .pop_back 增删
+* .insert(const_iterator pos,变量)在迭代器指向的位置插入
+* .erase(const_iterator pos)删除指向的元素
+* =等于assign(等号右边的变量名.begin(),等号右边的变量名.end());
+* empty()//是否为空
+* capacity()//返回容量
+* size()//返回元素个数
+* resize(int num)//重新指定容器长度
+* resize(int num,elem)//重新指定容器长度并用elem填充新增的位置
+* .clear()//清空
+* at()等于operator[]返回所指的数据
+* front()返回第一个元素
+* back()返回最后一个元素
+* swap()互换所有元素
+* reserve(int len)预留len个元素长度*/
