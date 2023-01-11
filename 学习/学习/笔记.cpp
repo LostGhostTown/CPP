@@ -553,3 +553,32 @@ cout<<c
 * back()返回最后一个元素
 * swap()互换所有元素
 * reserve(int len)预留len个元素长度*/
+/*deque
+* 由中控器保存每一组数据的地址   每组数据的地址本身没有联系
+* 双端数组 可对头尾进行插入和删除
+* push_front();pop_front 头部插入删除
+* puch_back();pop_back  尾部插入删除
+* begin（）；end（） 指向头部和尾部后一位
+* insert(pos,elem);insert(pos,n,elem);insert(pos,beg,end)//在pos位置插入1个或多个elem  将beg到end部分赋值到pos位置
+* erase(beg,end)删除区间并返回下一个数据的位置 erase(pos)删除pos位置并返回下一个数据的位置  clear()清楚
+* 构造
+* deque<t>变量名；
+* deque(begin,end)拷贝
+* deque(n.elem)拷贝n个elem
+* deque(const deque&deq)
+* 赋值
+* deque& operator=（const deque&deq）
+* assign(begin,end);assign(n,elem)
+* 大小
+* empty(0 是否为空
+* size()元素个数
+* resize(num);resize(num,elem)；改变大小并填充
+* 返回
+* at(int idx)返回idx所指的元素
+* operator[]返回所指元素
+* front（）；back（）返回第一个或最后一个元素
+* 排序
+* 需要头文件 algorithm
+* sort(iterator beg,iterator end)
+sort(.begin(),.end())
+在beg和end之间进行排序 从小到大*/
