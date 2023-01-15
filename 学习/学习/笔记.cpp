@@ -481,10 +481,13 @@ cout<<c
 * 分文件编写
 * 主程序直接包含.cpp而不是h 或者把声明和实现写到同一个文件中*/
 /*STL 基本模板库
+* 所有STL都要头文件
 * 容器 算法和迭代器 仿函数 配接器 空间配置器
 * 变量方法for_each(开头指针，结束指针，print函数)//不需要括号  函数有参数 用于打印
 */
 /*iterator 一种迭代器 用于遍历容器
+* 指示位置的时候需要用
+* 容器名<数据类型>::iterator 变量名=指向的位置//变量是指针
 * 例子:
 * for（容器名<类型名>::iterator it=从哪开始比如.begin();it!=到哪结束比如.end();it++）
 */
@@ -556,11 +559,11 @@ cout<<c
 /*deque
 * 由中控器保存每一组数据的地址   每组数据的地址本身没有联系
 * 双端数组 可对头尾进行插入和删除
-* push_front();pop_front 头部插入删除
-* puch_back();pop_back  尾部插入删除
+* push_front();pop_front() 头部插入删除
+* puch_back();pop_back()  尾部插入删除
 * begin（）；end（） 指向头部和尾部后一位
-* insert(pos,elem);insert(pos,n,elem);insert(pos,beg,end)//在pos位置插入1个或多个elem  将beg到end部分赋值到pos位置
-* erase(beg,end)删除区间并返回下一个数据的位置 erase(pos)删除pos位置并返回下一个数据的位置  clear()清楚
+* insert(pos,elem);insert(pos,n,elem);insert(pos,begin(),end())//在pos位置插入1个或多个elem  将beg到end部分赋值到pos位置
+* erase(begin(),end())删除区间并返回下一个数据的位置 erase(const_iterator pos)删除pos位置并返回下一个数据的位置  clear()清楚
 * 构造
 * deque<t>变量名；
 * deque(begin,end)拷贝
@@ -581,4 +584,59 @@ cout<<c
 * 需要头文件 algorithm
 * sort(iterator beg,iterator end)
 sort(.begin(),.end())
+需要头文件 algorithm  全局函数 不需要“.”
 在beg和end之间进行排序 从小到大*/
+/*stack
+* 栈容器
+* 没有遍历只能访问顶端数据
+* 先进后出  //数据按顺序反向记录
+* push();pop()
+* top()//访问顶端数据
+* empty()//返回是否为空
+* size()//返回元素个数
+* 构造函数
+* stack<T> stk;//或者 stack<数据类型> 变量名;
+* stack(const stack &stk)拷贝构造
+* 赋值用 =号*/
+/*queue
+* 队列容器
+* 先进先出
+* push();pop();
+* back();front()
+* //没有遍历只能访问对头和队尾
+* back端只接受push   front端只接受pop
+* 构造函数
+* queue<T> stk;//或者 stack<数据类型> 变量名;
+* queue(const stack &stk)//拷贝构造
+* 赋值用 =号
+* empty()//返回是否为空
+* size()//返回元素个数*/
+/*list
+* 链表
+* 数据储存不连续 由一系列节点组成
+* 每一个节点都储存前后两个节点的地址
+* 方便插入删除并且不会有浪费但速度慢且占用大
+* 最后一个结点的后一个指向第一个；第一个结点的前一个指向最后一个结点
+* 构造
+* list<T> 变量名//或者list<变量类型>变量名
+* list（n,elem);list(const list&变量名);list(begin(),end());
+* 赋值
+* assign(begin(),end())
+* assign(n,elem)
+* 用等号
+* swap（）//交换
+* 
+* empty()//返回是否为空
+* size()//返回元素个数
+* resize(num);resize(num,elem)；改变大小并填充
+* 插入删除
+* push_front();pop_front() 头部插入删除
+* puch_back();pop_back()  尾部插入删除
+* insert(pos,elem);insert(pos,n,elem);insert(pos,begin(),end())//在pos位置插入1个或多个elem  将beg到end部分赋值到pos位置
+* erase(begin(),end())删除区间并返回下一个数据的位置 erase(const_iterator pos)删除pos位置并返回下一个数据的位置  clear()清楚
+* remove(elem)删除容器中所以等于elem的元素
+* 
+* front（）；back（）返回第一个或最后一个元素
+* 
+* reverse()反转链表首尾对调
+* .sort()排序 从小到大
