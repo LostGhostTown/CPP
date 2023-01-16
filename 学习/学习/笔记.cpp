@@ -489,7 +489,7 @@ cout<<c
 * 指示位置的时候需要用
 * 容器名<数据类型>::iterator 变量名=指向的位置//变量是指针
 * 例子:
-* for（容器名<类型名>::iterator it=从哪开始比如.begin();it!=到哪结束比如.end();it++）
+* for（容器名<类型名>::iterator it=从哪开始比如.begin();it!=到哪结束比如.end();it++）//可以用于打印 cout<<*it<<endl;
 */
 /* vector
 * 需要头文件
@@ -573,13 +573,13 @@ cout<<c
 * deque& operator=（const deque&deq）
 * assign(begin,end);assign(n,elem)
 * 大小
-* empty(0 是否为空
-* size()元素个数
-* resize(num);resize(num,elem)；改变大小并填充
+* .empty() 是否为空
+* .size()元素个数
+* .resize(num);resize(num,elem)；改变大小并填充
 * 返回
-* at(int idx)返回idx所指的元素
+* .at(int idx)返回idx所指的元素
 * operator[]返回所指元素
-* front（）；back（）返回第一个或最后一个元素
+* .front（）；.back（）返回第一个或最后一个元素
 * 排序
 * 需要头文件 algorithm
 * sort(iterator beg,iterator end)
@@ -590,10 +590,10 @@ sort(.begin(),.end())
 * 栈容器
 * 没有遍历只能访问顶端数据
 * 先进后出  //数据按顺序反向记录
-* push();pop()
-* top()//访问顶端数据
-* empty()//返回是否为空
-* size()//返回元素个数
+* .push();.pop()
+* .top()//访问顶端数据
+* .empty()//返回是否为空
+* .size()//返回元素个数
 * 构造函数
 * stack<T> stk;//或者 stack<数据类型> 变量名;
 * stack(const stack &stk)拷贝构造
@@ -609,8 +609,8 @@ sort(.begin(),.end())
 * queue<T> stk;//或者 stack<数据类型> 变量名;
 * queue(const stack &stk)//拷贝构造
 * 赋值用 =号
-* empty()//返回是否为空
-* size()//返回元素个数*/
+* .empty()//返回是否为空
+* .size()//返回元素个数*/
 /*list
 * 链表
 * 数据储存不连续 由一系列节点组成
@@ -624,10 +624,10 @@ sort(.begin(),.end())
 * assign(begin(),end())
 * assign(n,elem)
 * 用等号
-* swap（）//交换
+* .swap（）//交换
 * 
-* empty()//返回是否为空
-* size()//返回元素个数
+* .empty()//返回是否为空
+* .size()//返回元素个数
 * resize(num);resize(num,elem)；改变大小并填充
 * 插入删除
 * push_front();pop_front() 头部插入删除
@@ -639,4 +639,45 @@ sort(.begin(),.end())
 * front（）；back（）返回第一个或最后一个元素
 * 
 * reverse()反转链表首尾对调
-* .sort()排序 从小到大
+* .sort()排序 从小到大*/
+/*set/multiset
+* 集合容器
+* 所有元素会自动被排序 从小到大
+* set不允许重复元素  multiset允许重复元素
+* set插入时会返回是否成功
+* pair<set<变量类型>::iterator,bool>变量名=s.insert(数据)
+* if(ret.second){插入成功}else{插入失败}// bool返回是否成功
+* 构造赋值
+* set<变量类型>变量名； set(const set &变量名)
+* =直接赋值
+* .swap（）//交换
+* 
+* .empty()//返回是否为空
+* .size()//返回元素个数
+* 插入删除
+* insert(elem);
+* erase(begin(),end())删除区间并返回下一个数据的位置 erase(const_iterator pos)删除pos位置并返回下一个数据的位置  clear()清楚
+* erase(elem)//删除容器中值为elem的元素
+* 查找和统计
+* find（elem)//查找是否存在返回位置  若不存在返回.end()
+* count(elem)//统计elem的元素个数
+* 
+* 让set从大到小打印
+* 在构造时 使用仿函数
+* class MyCompare{
+public:
+bool operator()(数据类型 v1,数据类型 v2){//比如int
+		return v1>v2
+	}
+}
+set<数据类型,MyCompare>变量名;
+
+当set的数据是自定义的时候 //既class
+我们必须指定排序规则
+需要用类似的仿函数*/
+/*pair
+* 对组
+* 创建对组变量：
+* pair<数据类型，数据类型>变量名(初始值，初始值)
+* pair<数据类型，数据类型>变量名=make_pair(初始值，初始值)
+* 用变量名.first &  变量名.second 调用数据*/
