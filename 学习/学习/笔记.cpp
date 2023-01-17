@@ -681,3 +681,33 @@ set<数据类型,MyCompare>变量名;
 * pair<数据类型，数据类型>变量名(初始值，初始值)
 * pair<数据类型，数据类型>变量名=make_pair(初始值，初始值)
 * 用变量名.first &  变量名.second 调用数据*/
+/*map/multimap
+* map中所有元素都是pair
+* 第一个元素是key键值  第二个元素为value 实值
+* 元素会根据key排序
+* 可以快速使用key值找到value
+* map不允许重复key  multimap允许重复key
+* 构造赋值
+* map<键值变量类型，实值变量类型>变量名；
+* map(const map &变量名)
+* 使用=赋值
+* .swap（）//交换
+* 
+* .empty()//返回是否为空
+* .size()//返回元素个数
+* .insert(map<键值变量类型，实值变量类型>::value_type(参数,参数));
+* .insert(pair<键值变量类型，实值变量类型>（参数，参数）)//插入
+* .insert(make_pair(参数，参数))
+* erase(begin(),end())删除区间并返回下一个数据的位置 erase(const_iterator pos)删除pos位置并返回下一个数据的位置  clear()清楚
+* erase(key)//删除容器中键值为key的元素
+* 查找统计
+* find(key);cout(key);//按照key查找和统计
+* 排序
+* 用仿函数修改规则
+* class MyCompare{
+public:
+bool operator()(数据类型 v1,数据类型 v2){//比如int
+		return v1>v2
+	}
+}
+map<数据类型,数据类型,MyCompare>变量名;// 只需要修改key的比较方式*/
