@@ -711,3 +711,51 @@ bool operator()(数据类型 v1,数据类型 v2){//比如int
 	}
 }
 map<数据类型,数据类型,MyCompare>变量名;// 只需要修改key的比较方式*/
+/*函数对象
+* 重载函数调用操作符的类
+* 就是仿函数
+* 这是一个类 就是重载()
+* 在类中写一个成员函数
+* 返回类型 operator()(参数，……){}
+* 调用时直接 类名(参数，……);
+* 
+* 因为是类 所以内部可以保存一些自己的数据和状态  即有自己的成员和成员函数
+* 
+* 可以作为参数
+* 
+* 匿名函数对象 不创建直接使用
+* 类名(参数)
+* 
+* 谓词
+* 返回bool类型的仿函数称为谓词
+* 
+* STL自带的函数对象
+* 头文件functional
+* 
+* 算术仿函数
+* template<class T>T plus<T>      //加法
+* template<class T>T minus<T>   //减法
+* template<class T>T multiplies<T> //乘法
+* template<class T>T divides<T>  //除法
+* template<class T>T mpdulus<T>  //取模
+* template<class T>T negate<T>   //取反
+* 调用
+*	函数名<参数类型>变量名
+* 变量名(参数)
+* 
+* 关系仿函数
+* template<class T>bool euqal_to<T>//等于
+* template<class T>bool not_equal_tp<T> //不等于
+* template<class T>bool greater<T> //大于
+* template<class T>bool greater_equal<T> //大于等于
+* template<class T>bool less<T> //小于
+* template<class T>bool less_equal<T> //小于等于
+* 调用
+* 函数名<参数类型>()
+* 
+* 逻辑仿函数
+* template<class T>bool logical_and<T>   //and
+* template<class T>bool logical_or<T>   //or
+* template<class T>bool logical_not<T>   //not
+* 调用
+* 函数名<参数类型>()*/
