@@ -715,6 +715,7 @@ map<数据类型,数据类型,MyCompare>变量名;// 只需要修改key的比较方式*/
 * 重载函数调用操作符的类
 * 就是仿函数
 * 这是一个类 就是重载()
+* 
 * 在类中写一个成员函数
 * 返回类型 operator()(参数，……){}
 * 调用时直接 类名(参数，……);
@@ -728,8 +729,12 @@ map<数据类型,数据类型,MyCompare>变量名;// 只需要修改key的比较方式*/
 * 
 * 谓词
 * 返回bool类型的仿函数称为谓词
+* 通常用于自定义判断
+* bool operator（）（参数）{
+return 参数和什么比较之类的    既成立返回真  不成立返回假
+}
 * 
-* STL自带的函数对象
+* STL自带的函数对象 有些是仿函数有些是谓词
 * 头文件functional
 * 
 * 算术仿函数
@@ -759,3 +764,52 @@ map<数据类型,数据类型,MyCompare>变量名;// 只需要修改key的比较方式*/
 * template<class T>bool logical_not<T>   //not
 * 调用
 * 函数名<参数类型>()*/
+/*常用算法
+* 头文件 algorithm numeric functional
+* 
+* 遍历算法  可用于打印
+* for_each(iterator begin,iterator end, _func)// 开始迭代器  结束迭代器  函数或函数对象就是你的遍历要做什么
+* 普通函数不需要(）  仿函数需要()
+* 
+* transform(iterator begin,iterator end,iterator beg2, _func)//用于搬运数据  原容器开始迭代器 原容器结束迭代器 目标容器开始迭代器   需要进行的运算比如逻辑运算 //可以直接返回数据
+* 注意搬运时需要先开辟需要的空间
+* 
+* 查找算法
+* find（iterator begin,iterator end, value)//开始迭代器 结束迭代器 需要找的元素
+* find 会返回迭代器  返回元素位置或找不到返回end()
+* 如果数据是自定义的既class  需要在类中重载operator==
+* 
+* find_if(iterator begin,iterator end, _pred）//开始迭代器 结束迭代器  谓词  既按照你的要求去找
+* 会返回迭代器  返回元素位置或找不到返回end()
+* 如果数据是自定义的既class  谓词部分的参数是（类名 &变量名）并自定义返回的需求  不需要在类中重载
+* 
+* adjacent_find(iterator beg,iterator end)
+* 找到就返回第一个元素的迭代器  没找到返回end()
+* 就是找有没有相邻的元素有没有一样的
+* 
+* binary_search(iterator begin,iterator end, value)
+* 找到返回true 没找到返回false 
+* 只能在有序序列中使用
+* 如果是无序的序列 结果未知
+* 
+* count(iterator begin,iterator end, value)
+* 统计元素value个数  返回int
+* 如果数据是自定义的既class  需要在类中重载operator==
+* 
+* count_if(iterator begin,iterator end, _pred）
+* 按条件统计元素个数  返回int
+* 如果数据是自定义的既class  谓词部分的参数是（类名 &变量名）并自定义返回的需求  不需要在类中重载
+* 
+* 排序算法
+* sort(iterator begin,iterator end, _pred）//第三个参数不填默认从小到大  或者自定义
+* 
+* random_shuffle(iterator begin,iterator end)//打乱数据 和随机一样是伪随机
+* 需要种子 srand((unsigned int)time(NULL));//需要头文件ctime
+* 
+* merge(iterator beg1,iterator end1,iterator beg2, iterator end2,iterator dest);//容器1开始结束  容器2开始结束 目标容器开始迭代器
+* 合并两个容器并储存到第三个容器里
+* 两个容器必须是有序的 合并后他们也会是有序的
+* 注意目标容器需要提前分配空间
+* 
+* reverse(iterator beg,iterator end)
+* 反转范围内元素  前后对调
