@@ -813,3 +813,48 @@ return 参数和什么比较之类的    既成立返回真  不成立返回假
 * 
 * reverse(iterator beg,iterator end)
 * 反转范围内元素  前后对调
+* 
+* 拷贝和替换算法
+* copy(iterator beg, iterator end,iterator dest)//将指定范围的元素拷贝到另一个容器  容器开始结束  目标容器开始迭代器
+* 注意目标容器需要提前分配空间
+* 
+* replace(iterator beg, iterator end,oldvalue,newvalue);//容器开始结束 将范围内所有旧数据都替换成新数据
+* 
+* replace(iterator beg, iterator end,_pred,newvalue);//容器开始结束 将范围内所有满足谓词的数据都替换成新数据
+* 
+* swap（container1.container2);呼唤两个容器的元素  比如同种容器
+* 
+* 算术生成算法
+* 头文件 numeric
+* accumulate(iterator beg,iterator end, value)://计算区间内所以元素的总和  value是初始值既计算 总和 + value = 返回值
+* 
+* fill(iterator beg,iterator end, value)//将value无限次填充到区间内
+* 
+* 集合算法
+* set_intersection(iterator beg1,iterator end1,iterator beg2, iterator end2,iterator dest);//容器1开始结束  容器2开始结束 目标容器开始迭代器
+* 求两个容器的交集 //n  一样的部分
+* 并放到目标容器中
+* 目标容器要先分配空间
+* 它会返回交集结束的位置 因为数量未知 它不一定能填充满目标容器 
+* 所以遍历目标容器变成
+* (.begin(),……iterator itend=set_intersection……)
+* 
+* set_union(iterator beg1,iterator end1,iterator beg2, iterator end2,iterator dest);//容器1开始结束  容器2开始结束 目标容器开始迭代器
+* 求两个容器的并集//U 加起来不重复
+* 并放到目标容器中
+* 目标容器要先分配空间
+* 两个集合必须是有序序列
+* 它会返回并集结束的位置 因为数量未知 它不一定能填充满目标容器 
+* 所以遍历目标容器变成
+* (.begin(),……iterator itend=set_union……)
+* 
+* set_difference(iterator beg1,iterator end1,iterator beg2, iterator end2,iterator dest);//容器1开始结束  容器2开始结束 目标容器开始迭代器)
+* 求两个集合的差集// 1容器和2容器中不同的部分
+* 例子：容器1{1，2，3} 容器2{3，4,5}
+* set_difference(容器1……容器2……）得出 {1,2}
+*  set_difference(容器2……容器1……）得出 {4,5}
+* 并放到目标容器中
+* 目标容器要先分配空间
+* 它会返回差集结束的位置 因为数量未知 它不一定能填充满目标容器 
+* 所以遍历目标容器变成
+* (.begin(),……iterator itend=set_difference……)*/
