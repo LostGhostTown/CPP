@@ -1,0 +1,1 @@
+date:15 time:10 id:1 stuid:1 state:2 date:15 time:10 id:2 stuid:2 state:-1 

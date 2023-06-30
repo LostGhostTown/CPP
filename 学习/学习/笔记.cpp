@@ -101,6 +101,11 @@ func(10)
 * 野指针 *p=(int *)0X1100 
 * 直接指定一个内存地址
 * 没用 避免它
+* 
+* *p=&a
+* 在a也是指针的情况下  p和a都是指针  指向同一个值
+* 在参数中（type *& point)//既在函数中以point指代传入的指针
+* 
 * 常量指针：
 * const int *p = &a
 * 指针的指向可以改 但变量的值不能改
@@ -490,6 +495,10 @@ cout<<c
 * 容器名<数据类型>::iterator 变量名=指向的位置//变量是指针
 * 例子:
 * for（容器名<类型名>::iterator it=从哪开始比如.begin();it!=到哪结束比如.end();it++）//可以用于打印 cout<<*it<<endl;
+* 
+* 迭代器套迭代器
+* for (map<string, string>::iterator mit = (*it).second.begin(); mit != it->second.end(); mit++) {、
+* //(*it). == it->
 */
 /* vector
 * 需要头文件
