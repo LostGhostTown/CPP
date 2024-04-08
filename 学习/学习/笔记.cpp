@@ -123,7 +123,7 @@ func(10)
 * 不可以修改
 * 静态变量用 static修饰
 * 静态变量由全局修改*/
-/* new可以把值从函数返回到全局
+/* new可以把值从函数返回到全局            new一次就必须delete一次
 * new是把值存到堆区
 * 例如 new int(10)
 * int *p=new int(10);new返回的是地址   接受也要指针  注意数据类型一致
@@ -549,11 +549,15 @@ cout<<c
 * 头文件
 * vector=单端数组 类似于动态数组
 * 将原因数据复制到一个更大的空间 并在后面添加数据
-* .begin()指向第一个元素   .end()指向最后一个元素的后一个位置
+* .begin()指向第一个元素->first//second打印值   .end()指向最后一个元素的后一个位置
 * .rbegin()指向最后一个元素  .rend()指向第一个元素的前一个位置
-* .push_back() .pop_back 增删
+* .push_back() .pop_back 增删 假设是用户输入一组比如“1，2，3，4” 可以直接用dowhile(getchar()!="\n)
 * .insert(const_iterator pos,变量)在迭代器指向的位置插入
 * .erase(const_iterator pos)删除指向的元素
+* vec.erase(vec.begin() + 2);
+* if (it->second == "Two") {
+            it = myMap.erase(it); 
+* 
 * =等于assign(等号右边的变量名.begin(),等号右边的变量名.end());
 * empty()//是否为空
 * capacity()//返回容量
@@ -565,6 +569,11 @@ cout<<c
 * front()返回第一个元素
 * back()返回最后一个元素
 * swap()互换所有元素
+* find()用于在字符串 word 中查找子字符串 prefix 的位置。如果找到了，它返回子字符串的起始索引；如果没有找到，它返回end()
+*  auto it = std::find(vec.begin(), vec.end(), 2);
+* 
+* sort(vector.begin(),vector.end())升序排序
+* max_element(begin(),end())获取范围内最大值
 * reserve(int len)预留len个元素长度*/
 /*deque
 * 由中控器保存每一组数据的地址   每组数据的地址本身没有联系
@@ -669,7 +678,7 @@ sort(.begin(),.end())
 * erase(begin(),end())删除区间并返回下一个数据的位置 erase(const_iterator pos)删除pos位置并返回下一个数据的位置  clear()清楚
 * erase(elem)//删除容器中值为elem的元素
 * 查找和统计
-* find（elem)//查找是否存在返回位置  若不存在返回.end()
+* find（elem)//查找是否存在返回位置  若不存在返回.end()   find会导致误判问题 用count也能判断  有返回1没有返回0可以直接用于判断
 * count(elem)//统计elem的元素个数
 * 
 * 让set从大到小打印
@@ -711,7 +720,7 @@ set<数据类型,MyCompare>变量名;
 * erase(begin(),end())删除区间并返回下一个数据的位置 erase(const_iterator pos)删除pos位置并返回下一个数据的位置  clear()清楚
 * erase(key)//删除容器中键值为key的元素
 * 查找统计
-* find(key);cout(key);//按照key查找和统计
+* find(key);//没找到则返回end() cout(key);//按照key查找和统计
 * 排序
 * 用仿函数修改规则
 * class MyCompare{
@@ -812,6 +821,10 @@ return 参数和什么比较之类的    既成立返回真  不成立返回假
 * 
 * 排序算法
 * sort(iterator begin,iterator end, _pred）//第三个参数不填默认从小到大  或者自定义
+* bool compare(const A& x, const A& y) {//升序排序
+    return x.sum < y.sum;
+}
+    sort(a, a + 101, compare);
 * 
 * random_shuffle(iterator begin,iterator end)//打乱数据 和随机一样是伪随机
 * 需要种子 srand((unsigned int)time(NULL));//需要头文件ctime
@@ -868,3 +881,120 @@ return 参数和什么比较之类的    既成立返回真  不成立返回假
 * 它会返回差集结束的位置 因为数量未知 它不一定能填充满目标容器 
 * 所以遍历目标容器变成
 * (.begin(),……iterator itend=set_difference……)*/
+/*#include<climits>
+*可以使用例如INT_MAX来使用变量
+*/
+/* 获取整行输入并存入vector
+*	vector<char>nums          //如果是要string转int 用stoi()
+*	string color;
+	string input1;
+	getline(cin, input1);
+	stringstream ss1(input1);
+	while (getline(ss1, color, ' ')) {//空格是分隔符
+		char ccolor = color[0];
+		nums.push_back(ccolor);
+	}
+	string str;
+	if(isdigit(c)){  //如果是数字                  //int转string    to_string()
+	str.append(1,c); //在末尾追加一次 c
+	}else{//没有数字后一次存
+	arr.pushback(stio(str));
+	str.clear();}
+
+	bool cmp(string x, string y) {//字典序排序 从大到小
+		return (x + y) > (y + x);
+		}
+
+	transform(mainString.begin(), mainString.end(), mainString.begin(), ::tolower);//将字符串全转为小写 大写用toupper
+*/
+/*10 和2 进制互转
+* #include<bitset>
+* int numss = 15;
+	bitset<8>binaryNumber(numss);
+	cout << binaryNumber;
+	int tnumber=binaryNumber.to_ulong();
+	cout << tnumber;
+	^   二进制的+
+
+	10 和 16
+	16转10： sto1(num,nullptr,16)
+	10转16：stringstream ss; ss<<gex<<num; string output =ss.str()
+*/
+/*
+* *sqrt()是平方根
+*/
+/*判断是否是数字
+* isdigit()
+* 判断是否是字母
+* isalpha()
+*/
+/*二叉树
+*struct TreeNode {
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+
+    // 构造函数
+    TreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
+};
+
+int main() {
+    // 创建二叉树节点
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+*/
+/*     
+vector<vector<string>> groupAnagrams(vector<string>& strs) {
+		unordered_map<string,vector<string>>mmap;
+		for(auto str:strs){
+			string sstr=str;
+			sort(sstr.begin(),sstr.end());
+			mmap[sstr].push_back(str);
+		}
+		vector<vector<string>>ret;
+		for(auto pair:mmap){
+			ret.push_back(pair.second);///遍历map并将对值取出并存入vector
+		}
+		return ret;
+	}
+
+*/
+/*获取两组不同的输入  主要是cin.ignore()
+int main() {
+	int numGroups;
+	cout << "Enter the number of groups: ";
+	cin >> numGroups;
+
+	// 忽略换行符
+	cin.ignore();
+
+	vector<vector<string>> groups;
+
+	// 读取每一组数据
+	for (int i = 0; i < numGroups; ++i) {
+		vector<string> stringsInGroup;
+		string inputString;
+		cout << "Enter data for group " << i+1 << ":" << endl;
+
+		// 读取每一行数据并存入vector<string>
+		for (int j = 0; j < 2; ++j) {
+			getline(cin, inputString);
+			stringsInGroup.push_back(inputString);
+		}
+
+		// 存储当前组的数据
+		groups.push_back(stringsInGroup);
+	}
+*/
+/*
+* 做子集合
+* 用vector<vector<>>来储存
+* 做两层循环；外循环遍历所有值；内循环遍历已有的子集（最开始是“ ”）把外循环当前值+=当前已有的子集
+* 生成新子集并添加进子集表
+*/
+
+/*
+* template<typename T>  
+* T function(){}  //即T
+*/
